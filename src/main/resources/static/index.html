@@ -1,1 +1,63 @@
+can you please connect this image with my html code 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Utkarsh ATM</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="atm-container">
+    <h1>💎 Utkarsh ATM 💎</h1>
+
+    <div>
+      <button onclick="checkBalance()">Check Balance</button>
+    </div>
+    <div>
+      <input type="number" id="withdrawAmount" placeholder="Withdraw Amount">
+      <button onclick="withdraw()">Withdraw</button>
+    </div>
+    <div>
+      <input type="number" id="depositAmount" placeholder="Deposit Amount">
+      <button onclick="deposit()">Deposit</button>
+    </div>
+    <div>
+      <input type="text" id="recipient" placeholder="Recipient Name">
+      <input type="number" id="transferAmount" placeholder="Transfer Amount">
+      <button onclick="transfer()">Transfer</button>
+    </div>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const API = "/api/atm";
+
+    async function checkBalance() {
+      const res = await fetch(API + "/balance");
+      document.getElementById("result").innerText = await res.text();
+    }
+
+    async function withdraw() {
+      let amount = document.getElementById("withdrawAmount").value;
+      const res = await fetch(API + "/withdraw?amount=" + amount, { method: "POST" });
+      document.getElementById("result").innerText = await res.text();
+    }
+
+    async function deposit() {
+      let amount = document.getElementById("depositAmount").value;
+      const res = await fetch(API + "/deposit?amount=" + amount, { method: "POST" });
+      document.getElementById("result").innerText = await res.text();
+    }
+
+    async function transfer() {
+      let recipient = document.getElementById("recipient").value;
+      let amount = document.getElementById("transferAmount").value;
+      const res = await fetch(API + `/transfer?recipient=${recipient}&amount=${amount}`, { method: "POST" });
+      document.getElementById("result").innerText = await res.text();
+    }
+  </script>
+</body>
+</html>
