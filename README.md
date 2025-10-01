@@ -23,24 +23,6 @@ It provides basic banking operations such as **Balance Inquiry**, **Deposit**, *
 
 ---
 
-## 📂 Project Structure
-CashCrest/
-├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── com/
-│ │ │ └── atm/
-│ │ │ └── demo/
-│ │ │ ├── DemoApplication.java
-│ │ │ ├── controller/
-│ │ │ │ └── ATMController.java
-│ │ │ └── model/
-│ │ │ └── BankAccount.java
-│ │ └── resources/
-│ │ └── application.properties
-├── pom.xml
-└── README.md
-
 yaml
 ---
 
